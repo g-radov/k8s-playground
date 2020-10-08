@@ -27,21 +27,21 @@ spec:
           - name: web
             containerPort: 9090
         volumeMounts:
-        - name: config-volume
+        - name: prometheus-config
           mountPath: /etc/prometheus
-        - name: data-volume
+        - name: prometheus-data
           mountPath: /prometheus
       restartPolicy: Always
       securityContext:
-        fsGroup: 2000
         runAsNonRoot: true
         runAsUser: 1000
+        fsGroup: 2000
       volumes:
-      - name: config-volume
+      - name: prometheus-data
+        persistentVolumeClaim:
+          claimName: prometheus-data
+      - name: prometheus-config
         configMap:
           defaultMode: 420
           name: prometheus-config
-      - name: data-volume
-        persistentVolumeClaim:
-          claimName: prometheus-data
 ...
