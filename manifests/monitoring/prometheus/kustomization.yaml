@@ -1,0 +1,8 @@
+---
+resources:
+  - config.yaml
+  - cluster-role.yaml
+  - deployment.yaml
+  - service.yaml
+  - storage.yaml
+...
