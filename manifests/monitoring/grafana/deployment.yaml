@@ -4,8 +4,6 @@ kind: Deployment
 metadata:
   name: grafana
   namespace: monitoring
-  labels:
-    app: grafana
 spec:
   replicas: 1
   selector:
@@ -13,13 +11,32 @@ spec:
       app: grafana
   template:
     metadata:
+      name: grafana
       labels:
         app: grafana
     spec:
       containers:
       - name: grafana
-        image: grafana/grafana
+        image: grafana/grafana:latest
         ports:
           - name: grafana
             containerPort: 3000
+        volumeMounts:
+          - name: grafana-data
+            mountPath: /var/lib/grafana
+          - name: grafana-datasources
+            mountPath: /etc/grafana/provisioning/datasources
+      restartPolicy: Always
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 472
+        fsGroup: 472
+      volumes:
+      - name: grafana-data
+        persistentVolumeClaim:
+          claimName: grafana-data
+      - name: grafana-datasources
+        configMap:
+          defaultMode: 420
+          name: grafana-datasources
 ...
