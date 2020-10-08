@@ -1,6 +1,6 @@
 ---
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   name: prometheus
   namespace: monitoring
@@ -11,6 +11,7 @@ spec:
   selector:
     matchLabels:
       app: prometheus
+  serviceName: "prometheus"
   template:
     metadata:
       labels:
@@ -18,7 +19,7 @@ spec:
     spec:
       containers:
       - name: prometheus
-        image: prom/prometheus
+        image: prom/prometheus:v2.21.0
         args:
           - '--storage.tsdb.retention=6h'
           - '--storage.tsdb.path=/prometheus'
@@ -37,11 +38,19 @@ spec:
         runAsUser: 1000
         fsGroup: 2000
       volumes:
-      - name: prometheus-data
-        persistentVolumeClaim:
-          claimName: prometheus-data
       - name: prometheus-config
         configMap:
           defaultMode: 420
           name: prometheus-config
+  volumeClaimTemplates:
+    - metadata:
+        name: prometheus-data
+        labels:
+          app: prometheus
+      spec:
+        accessModes: [ "ReadWriteOnce" ]
+        storageClassName: standard
+        resources:
+          requests:
+            storage: 500Mi
 ...
