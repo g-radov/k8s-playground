@@ -1,6 +1,6 @@
 ---
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   name: grafana
   namespace: monitoring
@@ -9,6 +9,7 @@ spec:
   selector:
     matchLabels:
       app: grafana
+  serviceName: "grafana"
   template:
     metadata:
       name: grafana
@@ -17,7 +18,7 @@ spec:
     spec:
       containers:
       - name: grafana
-        image: grafana/grafana:latest
+        image: grafana/grafana:5.1.3
         ports:
           - name: grafana
             containerPort: 3000
@@ -32,11 +33,19 @@ spec:
         runAsUser: 472
         fsGroup: 472
       volumes:
-      - name: grafana-data
-        persistentVolumeClaim:
-          claimName: grafana-data
       - name: grafana-datasources
         configMap:
           defaultMode: 420
           name: grafana-datasources
+  volumeClaimTemplates:
+    - metadata:
+        name: grafana-data
+        labels:
+          app: grafana
+      spec:
+        accessModes: [ "ReadWriteOnce" ]
+        storageClassName: standard
+        resources:
+          requests:
+            storage: 500Mi
 ...
