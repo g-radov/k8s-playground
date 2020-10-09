@@ -4,5 +4,4 @@ resources:
   - cluster-role.yaml
   - deployment.yaml
   - service.yaml
-  - storage.yaml
 ...
