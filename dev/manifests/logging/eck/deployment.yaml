@@ -1,3 +1,4 @@
+---
 apiVersion: apiextensions.k8s.io/v1beta1
 kind: CustomResourceDefinition
 metadata:
@@ -2278,3 +2279,4 @@ kind: Secret
 metadata:
   name: elastic-webhook-server-cert
   namespace: logging
+...

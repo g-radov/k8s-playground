@@ -9,6 +9,7 @@ spec:
   count: 1
   elasticsearchRef:
     name: "elasticsearch"
+    namespace: logging
   secureSettings:
   - secretName: kibana-saved-objects-encrypted-key
   http:
