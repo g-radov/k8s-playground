@@ -4,4 +4,7 @@ kind: Kustomization
 
 bases:
   - manifests
+
+commonLabels:
+  environment: dev
 ...
