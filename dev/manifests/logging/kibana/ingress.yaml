@@ -1,0 +1,16 @@
+---
+apiVersion: "extensions/v1beta1"
+kind: "Ingress"
+metadata:
+  name: "kibana-web"
+  namespace: "monitoring"
+spec:
+  rules:
+  - http:
+      paths:
+      - path: "/kibana"
+        backend:
+          serviceName: "kibana-web"
+          servicePort: 80
+    host: "invalidbydefault.xyz"
+...
