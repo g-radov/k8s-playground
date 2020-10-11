@@ -3,7 +3,7 @@ apiVersion: "extensions/v1beta1"
 kind: "Ingress"
 metadata:
   name: "kibana-web"
-  namespace: "monitoring"
+  namespace: "logging"
 spec:
   rules:
   - http:
