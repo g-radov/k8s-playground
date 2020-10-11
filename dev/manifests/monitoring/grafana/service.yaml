@@ -23,7 +23,7 @@ metadata:
   name: grafana-web
   namespace: monitoring
 spec:
-  type: NodePort
+  type: LoadBalancer
   ports:
   - name: http
     protocol: TCP

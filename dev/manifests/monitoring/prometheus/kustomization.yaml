@@ -11,13 +11,12 @@ bases:
 resources:
   - clusterRole.yaml
   - clusterRoleBinding.yaml
-  - prometheus.yaml
   - roleBindingConfig.yaml
   - roleBindingSpecificNamespaces.yaml
   - roleConfig.yaml
   - roleSpecificNamespaces.yaml
+  - prometheus.yaml
   - rules.yaml
-  - service.yaml
   - serviceAccount.yaml
   - serviceMonitor.yaml
   - serviceMonitorApiserver.yaml
@@ -25,4 +24,5 @@ resources:
   - serviceMonitorKubeControllerManager.yaml
   - serviceMonitorKubelet.yaml
   - serviceMonitorKubeScheduler.yaml
+  - service.yaml
 ...

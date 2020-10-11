@@ -7,7 +7,6 @@ resources:
   - dashboardDefinitions.yaml
   - dashboardSources.yaml
   - deployment.yaml
-  - ingress.yaml
   - service.yaml
   - serviceAccount.yaml
   - serviceMonitor.yaml
