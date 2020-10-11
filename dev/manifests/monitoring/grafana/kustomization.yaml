@@ -1,10 +1,13 @@
 ---
-namespace: monitoring
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
 resources:
   - dashboardDatasources.yaml
   - dashboardDefinitions.yaml
   - dashboardSources.yaml
   - deployment.yaml
+  - ingress.yaml
   - service.yaml
   - serviceAccount.yaml
   - serviceMonitor.yaml
