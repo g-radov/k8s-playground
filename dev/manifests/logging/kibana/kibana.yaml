@@ -14,7 +14,7 @@ spec:
   http:
     service:
       spec:
-        type: LoadBalancer
+        type: NodePort
         ports:
         - name: https
           protocol: TCP
