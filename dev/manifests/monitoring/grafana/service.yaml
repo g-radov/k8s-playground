@@ -13,4 +13,22 @@ spec:
     targetPort: http
   selector:
     app: grafana
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: grafana
+  name: grafana-web
+  namespace: monitoring
+spec:
+  type: NodePort
+  ports:
+  - name: http
+    protocol: TCP
+    port: 3000
+    targetPort: http
+  selector:
+    app: grafana
 ...
