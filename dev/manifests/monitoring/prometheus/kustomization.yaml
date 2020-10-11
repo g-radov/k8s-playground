@@ -1,7 +1,26 @@
 ---
+namespace: monitoring
+bases:
+  - alertmanager
+  - kube-state-metrics
+  - node-exporter
+  - prometheus-adapter
+
 resources:
-  - config.yaml
-  - cluster-role.yaml
-  - deployment.yaml
+  - clusterRole.yaml
+  - clusterRoleBinding.yaml
+  - prometheus.yaml
+  - roleBindingConfig.yaml
+  - roleBindingSpecificNamespaces.yaml
+  - roleConfig.yaml
+  - roleSpecificNamespaces.yaml
+  - rules.yaml
   - service.yaml
+  - serviceAccount.yaml
+  - serviceMonitor.yaml
+  - serviceMonitorApiserver.yaml
+  - serviceMonitorCoreDNS.yaml
+  - serviceMonitorKubeControllerManager.yaml
+  - serviceMonitorKubelet.yaml
+  - serviceMonitorKubeScheduler.yaml
 ...

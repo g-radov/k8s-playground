@@ -1,9 +1,8 @@
 ---
 namespace: monitoring
 resources:
-  - dashboardDatasources.yaml
-  - dashboardDefinitions.yaml
-  - deployment.yaml
+  - alertmanager.yaml
+  - secret.yaml
   - service.yaml
   - serviceAccount.yaml
   - serviceMonitor.yaml

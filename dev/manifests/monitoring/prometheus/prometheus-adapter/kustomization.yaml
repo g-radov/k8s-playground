@@ -1,0 +1,16 @@
+---
+namespace: monitoring
+resources:
+  - apiService.yaml
+  - clusterRole.yaml
+  - clusterRoleAggregatedMetricsReader.yaml
+  - clusterRoleBinding.yaml
+  - clusterRoleBindingDelegator.yaml
+  - clusterRoleServerResources.yaml
+  - configMap.yaml
+  - deployment.yaml
+  - roleBindingAuthReader.yaml
+  - service.yaml
+  - serviceAccount.yaml
+  - serviceMonitor.yaml
+...

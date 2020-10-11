@@ -1,9 +1,9 @@
 ---
 namespace: monitoring
 resources:
-  - dashboardDatasources.yaml
-  - dashboardDefinitions.yaml
-  - deployment.yaml
+  - clusterRole.yaml
+  - clusterRoleBinding.yaml
+  - daemonset.yaml
   - service.yaml
   - serviceAccount.yaml
   - serviceMonitor.yaml
