@@ -8,8 +8,7 @@ spec:
   version: 7.8.0
   count: 1
   elasticsearchRef:
-    name: "elasticsearch"
-    namespace: logging
+    name: elasticsearch
   secureSettings:
   - secretName: kibana-saved-objects-encrypted-key
   http:
@@ -26,8 +25,6 @@ spec:
         subjectAltNames:
         - ip: 192.168.0.1
         - dns: example.com
-  # this shows how to customize the Kibana pod
-  # with labels and resource limits
   podTemplate:
     metadata:
       labels:
@@ -36,6 +33,9 @@ spec:
       containers:
       - name: kibana
         resources:
+          requests:
+            memory: 1Gi
+            cpu: 0.5
           limits:
             memory: 1Gi
             cpu: 1
