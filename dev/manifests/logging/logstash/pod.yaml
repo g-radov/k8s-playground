@@ -5,6 +5,7 @@ metadata:
   labels:
     app: logstash
   name: logstash
+  namespace: logging
 spec:
   containers:
   - image: docker.elastic.co/logstash/logstash:7.8.0
@@ -48,5 +49,6 @@ spec:
   - name: cert-ca
     secret:
       secretName: elasticsearch-es-http-certs-public
+
 status: {}
 ...
